@@ -6,7 +6,7 @@ const sendEmail = require("../utils/sendEmail");
 const sendToken = require("../utils/jwtToken");
 const cloudinary = require("../utils/cloudinary");
 
-
+// Register User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const result = await cloudinary.uploader.upload(req.file.path, {
         folder: "avatars",
@@ -117,23 +117,30 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-// Reset Password 
+// Reset Password
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
-
     // Hash URL token
-    const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex')
+    const resetPasswordToken = crypto
+        .createHash("sha256")
+        .update(req.params.token)
+        .digest("hex");
 
     const user = await User.findOne({
         resetPasswordToken,
-        resetPasswordExpire: { $gt: Date.now() }
-    })
+        resetPasswordExpire: { $gt: Date.now() },
+    });
 
     if (!user) {
-        return next(new ErrorHander('Password reset token is invalid or has been expired', 400))
+        return next(
+            new ErrorHander(
+                "Password reset token is invalid or has been expired",
+                400
+            )
+        );
     }
 
     if (req.body.password !== req.body.confirmPassword) {
-        return next(new ErrorHander('Password does not match', 400))
+        return next(new ErrorHander("Password does not match", 400));
     }
 
     // Setup new password
@@ -144,6 +151,5 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
     await user.save();
 
-    sendToken(user, 200, res)
-
-})
+    sendToken(user, 200, res);
+});

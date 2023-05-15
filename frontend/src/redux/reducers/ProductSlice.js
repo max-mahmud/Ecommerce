@@ -5,8 +5,8 @@ const initialState = {
   error: '',
   productsInfo: [],
   product: {},
-//   message: '',
-//   dashboard: {},
+  message: '',
+  dashboard: {},
 };
 
 export const productSlice = createSlice({
@@ -31,15 +31,25 @@ export const productSlice = createSlice({
       state.productsInfo = [];
       state.error = '';
     },
+    messageProduct: (state, { payload }) => {
+      state.isLoading = false;
+      state.message = payload;
+    },
+    dashboardData: (state, { payload }) => {
+      state.isLoading = false;
+      state.dashboard = payload;
+    },
   },
 });
 
 const { reducer, actions } = productSlice;
 export const {
+  messageProduct,
   productPending,
   productSuccess,
   productFailure,
   clearProduct,
+  dashboardData,
 } = actions;
 
 export default reducer;

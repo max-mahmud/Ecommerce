@@ -1,20 +1,20 @@
 export const productTableRows = [
   {
-    name: 'product 1',
+    name: 'Akash',
     image: 'Image',
     category: 'Category',
     stock: 'Stock',
     price: 32.54,
   },
   {
-    name: 'product 1',
+    name: 'Rony',
     image: 'Image',
     category: 'Category',
     stock: 'Stock',
     price: 32.54,
   },
   {
-    name: 'product 1',
+    name: 'Titas',
     image: 'Image',
     category: 'Category',
     stock: 'Stock',

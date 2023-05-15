@@ -14,7 +14,7 @@ export const storeProductInCart =
       const carts = new Array(...cartProducts);
       carts.push(product);
       // set cart to local storage
-      localStorage.setItem("cart", JSON.stringify(carts));
+      localStorage.setItem("carts", JSON.stringify(carts));
       dispatch(cartSuccess(carts));
       notify("Product Added to Cart", "success");
     } catch (error) {

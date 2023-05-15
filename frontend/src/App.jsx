@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/*" element={<AppLayout />} />
         <Route path="*" element={<Notpage />} />
+
       </Routes>
     </Suspense>
   )
