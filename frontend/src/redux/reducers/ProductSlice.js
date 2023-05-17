@@ -7,6 +7,7 @@ const initialState = {
   product: {},
   message: '',
   dashboard: {},
+  resultPerPage:{}
 };
 
 export const productSlice = createSlice({
@@ -20,6 +21,8 @@ export const productSlice = createSlice({
       state.error = '';
       state.isLoading = false;
       state.productsInfo = payload;
+      // state.resultPerPage = payload;
+      state.productsCount = payload.length;
     },
     productFailure: (state, { payload }) => {
       state.error = payload;
@@ -39,6 +42,7 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.dashboard = payload;
     },
+
   },
 });
 

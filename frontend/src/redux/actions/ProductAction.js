@@ -24,9 +24,10 @@ export const getAllProducts = (params) => async (dispatch) => {
   }
 };
 
+// fetch product by id 
+
+
 // delete product by id
-
-
 export const deleteProductAction = (params) => async (dispatch) => {
   dispatch(productPending());
   try {
@@ -44,6 +45,7 @@ export const deleteProductAction = (params) => async (dispatch) => {
   }
 };
 
+//create a new product
 export const createProductAction = (data) => async (dispatch) => {
   dispatch(productPending());
   try {

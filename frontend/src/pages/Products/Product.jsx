@@ -8,7 +8,7 @@ import { getAllProducts } from "../../redux/actions/ProductAction";
 
 const Products = () => {
   const { search } = useLocation();
-  const { productsInfo, isLoading } = useSelector((state) => state.products);
+  const { productsInfo, isLoading, } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const { cartProducts } = useSelector((state) => state.carts);
 
@@ -21,13 +21,10 @@ const Products = () => {
     if (query) return dispatch(getAllProducts(query));
     else return dispatch(getAllProducts());
   };
-  // const getProducts = () => {
-  //    return dispatch(getAllProducts());
-  //   // return dispatch(getAllProducts());
-  // };
   useEffect(() => {
     fetchProducts(search);
   }, [search]);
+
 
   return (
     <section className="flash">

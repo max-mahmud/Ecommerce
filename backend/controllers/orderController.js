@@ -8,7 +8,6 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     const {
         shippingInfo,
         orderItems,
-        paymentInfo,
         itemsPrice,
         taxPrice,
         shippingPrice,

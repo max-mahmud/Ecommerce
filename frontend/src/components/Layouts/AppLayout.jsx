@@ -8,6 +8,8 @@ import NotPage from "../../pages/NotPage";
 import Cart from "../../pages/Cart/Cart";
 import ResetPassword from "../../pages/Auth/ResetPassword";
 import ForgotPassword from "../../pages/Auth/ForgotPassword";
+import Checkout from "../../pages/Cart/Checkout";
+import CheckoutSuccess from "../../pages/Cart/CheckoutSuccess";
 
 const AppLayout = () => {
   return (
@@ -18,8 +20,10 @@ const AppLayout = () => {
         <Route path="/products">
           <Route index element={<Product />} />
         </Route>
-        <Route path="/carts">
+        <Route path="/carts/*">
           <Route index element={<Cart />} />
+          <Route path="checkout-process" element={<Checkout />} />
+          <Route path="checkout/success" element={<CheckoutSuccess />} />
         </Route>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
